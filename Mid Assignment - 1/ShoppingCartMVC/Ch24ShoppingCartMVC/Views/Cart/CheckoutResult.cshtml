@@ -1,0 +1,24 @@
+﻿@model FormCollection
+@{
+    ViewBag.Title = "CheckoutResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Checkout Result</h2>
+<br />
+<table>
+    <tr>
+        <td>Total price</td>
+        <td>@Model["total"]</td>
+    </tr>
+    <tr>
+        <td>Tax</td>
+        <td>@Model["tax"]</td>
+    </tr>
+    <tr>
+        <td><b>Total price</b></td>
+        <td><b>@Model["totalinctax"]</b></td>
+    </tr>
+</table>
+<br />
+Payment successful using <b>@Model["payment"]</b> method.

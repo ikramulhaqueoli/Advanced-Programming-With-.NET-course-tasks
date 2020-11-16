@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+@model Ch24ShoppingCartMVC.Models.CartViewModel
+@section css {
+    <link href="~/Content/Cart.css" rel="stylesheet" />
+}
+<h2>Your Shopping Cart</h2>
+<br />
+@if (Model.Cart.Count == 0)
+{
+    <p>Nothing in your cart yet.</p>
+}
+else
+{
+    decimal totalCost = 0;
+<form method="post">
+    <table>
+        <tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>
+        @foreach (var item in Model.Cart)
+        {
+            <tr> <td>@item.Name</td>  <td>@item.Quantity</td> <td>@Math.Round(item.Quantity * item.UnitPrice, 2)</td>  </tr>
+            totalCost += (item.Quantity * item.UnitPrice);
+        }
+        <tr> <td>-</td>  <td></td> <td></td>  </tr>
+        <tr> <td>Total</td>  <td></td> <td>@Math.Round(totalCost, 2)</td>  </tr>
+        @{ decimal tax = totalCost * (decimal)ViewBag.Tax; }
+        <tr> <td>Tax</td>  <td></td> <td>@Math.Round(tax, 2)</td>  </tr>
+        <tr> <td><b>Total inc. Tax<br /></td>  <td></td> <td><b>@Math.Round(totalCost + tax, 2)</b></td></tr>
+    </table>
+    <input type="hidden" name="total" value="@Math.Round(totalCost, 2)" />
+    <input type="hidden" name="tax" value="@Math.Round(tax, 2)" />
+    <input type="hidden" name="totalinctax" value="@Math.Round(totalCost + tax, 2)" />
+    <p>Select payment method: </p>
+    <input type="radio" name="payment" value="card" /> <span>Visa, Mastercard, AMEX</span>
+    <input type="radio" name="payment" value="bkash" /> <span>bKash</span>
+    <input type="radio" name="payment" value="cash" /> <span>Cash</span>
+    <input type="submit" value="Proceed checkout" name="proceed" />
+</form>
+}
