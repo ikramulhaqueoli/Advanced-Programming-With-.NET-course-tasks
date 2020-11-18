@@ -58,7 +58,5 @@ namespace Ch24ShoppingCartMVC.Models{
                     inCart.Quantity += model.AddedProduct.Quantity;
             }
         }
-                
-       
     }    
 }

@@ -34,9 +34,9 @@ else
     <input type="hidden" name="tax" value="@Math.Round(tax, 2)" />
     <input type="hidden" name="totalinctax" value="@Math.Round(totalCost + tax, 2)" />
     <p>Select payment method: </p>
-    <input type="radio" name="payment" value="card" /> <span>Visa, Mastercard, AMEX</span>
-    <input type="radio" name="payment" value="bkash" /> <span>bKash</span>
-    <input type="radio" name="payment" value="cash" /> <span>Cash</span>
-    <input type="submit" value="Proceed checkout" name="proceed" />
+    <ul><input type="radio" name="payment" value="card" /> <span>Visa, Mastercard, AMEX</span></ul>
+    <ul><input type="radio" name="payment" value="bkash" /> <span>bKash</span></ul>
+    <ul><input type="radio" name="payment" value="cash" /> <span>Cash</span></ul>
+    <br /><input type="submit" value="Proceed checkout" name="proceed" />
 </form>
 }
